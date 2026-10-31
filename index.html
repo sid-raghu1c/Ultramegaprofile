@@ -27771,7 +27771,7 @@ Error generating stack: ` +
                     label: `Username`,
                     children: (0, I.jsx)(H, {
                       readOnly: !0,
-                      value: G.getSession()?.username || ``,
+                      value: G.getSession()?.username || `investor_mega`,
                       className: `bg-slate-50 text-muted-foreground focus-visible:ring-0`,
                     }),
                   }),
@@ -27779,7 +27779,7 @@ Error generating stack: ` +
                     label: `Mobile No.`,
                     children: (0, I.jsx)(H, {
                       readOnly: !0,
-                      value: G.getSession()?.mobile || ``,
+                      value: G.getSession()?.mobile || `9876543210`,
                       className: `bg-slate-50 text-muted-foreground focus-visible:ring-0`,
                     }),
                   }),
@@ -28552,6 +28552,27 @@ Error generating stack: ` +
                     children: `Registered & Correspondence Address`,
                   }),
                   (0, I.jsxs)(`div`, {
+                    className: `grid gap-4 md:grid-cols-2`,
+                    children: [
+                      (0, I.jsx)(K, {
+                        label: `Username`,
+                        children: (0, I.jsx)(H, {
+                          readOnly: !0,
+                          value: G.getSession()?.username || `investor_mega`,
+                          className: `bg-slate-50 text-muted-foreground focus-visible:ring-0`,
+                        }),
+                      }),
+                      (0, I.jsx)(K, {
+                        label: `Mobile No.`,
+                        children: (0, I.jsx)(H, {
+                          readOnly: !0,
+                          value: G.getSession()?.mobile || `9876543210`,
+                          className: `bg-slate-50 text-muted-foreground focus-visible:ring-0`,
+                        }),
+                      }),
+                    ],
+                  }),
+                  (0, I.jsxs)(`div`, {
                     className: `space-y-4`,
                     children: [
                       (0, I.jsx)(K, {
@@ -28909,8 +28930,29 @@ Error generating stack: ` +
             ],
           }),
           (0, I.jsx)(`div`, {
-            className: `mt-2 text-[12px] font-semibold uppercase tracking-wider text-muted-foreground`,
-            children: `Registered Office`,
+            className: `mt-4 text-sm font-medium text-forest-deep border-b border-border pb-2`,
+            children: `Contact & Address Details`,
+          }),
+          (0, I.jsxs)(`div`, {
+            className: `grid gap-4 md:grid-cols-2 mt-4`,
+            children: [
+              (0, I.jsx)(K, {
+                label: `Username`,
+                children: (0, I.jsx)(H, {
+                  readOnly: !0,
+                  value: G.getSession()?.username || `investor_mega`,
+                  className: `bg-slate-50 text-muted-foreground focus-visible:ring-0`,
+                }),
+              }),
+              (0, I.jsx)(K, {
+                label: `Mobile No.`,
+                children: (0, I.jsx)(H, {
+                  readOnly: !0,
+                  value: G.getSession()?.mobile || `9876543210`,
+                  className: `bg-slate-50 text-muted-foreground focus-visible:ring-0`,
+                }),
+              }),
+            ],
           }),
           e.orgType !== `firm` &&
           e.orgType !== `company` &&
@@ -34813,39 +34855,6 @@ Error generating stack: ` +
           c(6);
           return;
         }
-        if (s === 6) {
-          if (!fin.bankName.trim()) {
-            j.error(`Bank / Financial Institution Name is mandatory.`);
-            return;
-          }
-          if (fin.loanAmt === `` || isNaN(loanRs)) {
-            j.error(`Bank Loan Amount (In Rs.) is mandatory.`);
-            return;
-          }
-          if (fin.ownFunds === `` || isNaN(ownRs)) {
-            j.error(`Own Contribution (In Rs.) is mandatory.`);
-            return;
-          }
-          for (let item of otherSources) {
-            if (!item.source.trim()) {
-              j.error(`Please specify details for all Funds from Other Sources.`);
-              return;
-            }
-            if (!(parseFloat(item.amount) > 0)) {
-              j.error(`Please enter a valid amount for all Funds from Other Sources.`);
-              return;
-            }
-          }
-          if (!isFinanceBalanced) {
-            j.error(
-              `Total Means of Finance (₹ ${totalMeansRs.toLocaleString(`en-IN`)}) must strictly equal Total Project Cost (₹ ${totalProjectCostRs.toLocaleString(`en-IN`)}). Discrepancy: ₹ ${Math.abs(financeDiff).toLocaleString(`en-IN`)}`,
-            );
-            return;
-          }
-          saveDraft(!1);
-          c(7);
-          return;
-        }
       };
 
       // eSign Submission Execution
@@ -35362,8 +35371,7 @@ Error generating stack: ` +
                   `Project Info`,
                   `Employment`,
                   `Project Cost`,
-                  `Finance Means`,
-                  `Checklist & Review`,
+                  `Finance Means & Submission`,
                 ].map((name, idx) => {
                   let stepNum = idx + 1,
                     isCurrent = s === stepNum,
